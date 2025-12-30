@@ -1,5 +1,6 @@
 const reactDescriptions = ["Fundamental", "Crucial", "Core"];
 import reactImg from "./assets/react-core-concepts.png";
+import stateImg from "./assets/state-mgmt.png";
 import { CORE_CONCEPTS } from "./data";
 
 function genRandomInt(max) {
@@ -31,6 +32,27 @@ function CoreConcept(props) {
   );
 }
 
+// function CoreConcept({image, title, description}) {
+//   /* ******************************************
+//    * This function is the same as the above
+//    * function.
+//    *
+//    * Using object destructuring in the
+//    * arguments of the function, you can also
+//    * replace the props object with its
+//    * destructured version, allowing you
+//    * to call the properties directly, without
+//    * having to call them with props.your_item
+//    * **************************************** */
+//   return (
+//     <li>
+//       <img src={image} alt={description} />
+//       <h3>{title}</h3>
+//       <p>{description}</p>
+//     </li>
+//   );
+// }
+
 function App() {
   return (
     <div>
@@ -51,18 +73,30 @@ function App() {
             />
             <CoreConcept
               /* ******************************************
-               * This also works, using the spread 
-               * operator to access all the key value 
-               * pairs in the object located at index 1 
-               * of the data.js file. However, this only 
-               * works when the keys in the data are 
-               * the same as the arguments taken in 
+               * This also works, using the spread
+               * operator to access all the key value
+               * pairs in the object located at index 1
+               * of the data.js file. However, this only
+               * works when the keys in the data are
+               * the same as the arguments taken in
                * the function definition.
                * **************************************** */
               {...CORE_CONCEPTS[1]}
             />
-            <CoreConcept {...CORE_CONCEPTS[2]}/>
-            <CoreConcept {...CORE_CONCEPTS[3]}/>
+            <CoreConcept {...CORE_CONCEPTS[2]} />
+            <CoreConcept
+              /* ******************************************
+               * Lastly, this is also an option, though it 
+               * isn't very clean and doesn't utilize the 
+               * dynamic nature of react nearly to the 
+               * extent that it can be useful. However, 
+               * notice how the image is still being 
+               * imported.
+               * **************************************** */
+              title="State"
+              description="React-managed data which, when changed, causes the component to re-render & the UI to update."
+              image={stateImg}
+            />
           </ul>
         </section>
       </main>
