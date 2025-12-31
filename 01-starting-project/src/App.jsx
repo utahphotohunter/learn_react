@@ -1,36 +1,7 @@
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-import reactImg from "./assets/react-core-concepts.png";
 import stateImg from "./assets/state-mgmt.png";
 import { CORE_CONCEPTS } from "./data";
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-  const description = reactDescriptions[genRandomInt(2)];
-
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcept(props) {
-  return (
-    <li>
-      <img src={props.image} alt={props.description} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  );
-}
+import Header from "./components/Header/Header.jsx";
+import CoreConcept from "./components/CoreConcepts/CoreConcepts.jsx";
 
 // function CoreConcept({image, title, description}) {
 //   /* ******************************************
@@ -86,11 +57,11 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[2]} />
             <CoreConcept
               /* ******************************************
-               * Lastly, this is also an option, though it 
-               * isn't very clean and doesn't utilize the 
-               * dynamic nature of react nearly to the 
-               * extent that it can be useful. However, 
-               * notice how the image is still being 
+               * Lastly, this is also an option, though it
+               * isn't very clean and doesn't utilize the
+               * dynamic nature of react nearly to the
+               * extent that it can be useful. However,
+               * notice how the image is still being
                * imported.
                * **************************************** */
               title="State"
