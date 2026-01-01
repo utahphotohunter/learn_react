@@ -35,7 +35,21 @@ function App() {
    * the top level of componenet, in this case,
    * the App componenet.
    * **************************************** */
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState();
+
+  let tabContent = <p>Please select a topic.</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
+
   const handleClick = (selectedClick) => {
     setSelectedTopic(selectedClick);
   };
@@ -106,13 +120,22 @@ function App() {
             <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          {/* 
+           This is one method that can be used for setting content dynamically, though it isn't as readable and clean as the final version used in this project. 
+          
+          {!selectedTopic ? (
+            <p>Please select a topic.</p>
+          ) : (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )} 
+           */}
+          {tabContent}
         </section>
       </main>
     </div>
