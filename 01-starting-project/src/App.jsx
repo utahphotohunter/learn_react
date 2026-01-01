@@ -1,6 +1,6 @@
 import { useState } from "react";
 import stateImg from "./assets/state-mgmt.png";
-import { CORE_CONCEPTS } from "./data";
+import { CORE_CONCEPTS, EXAMPLES } from "./data";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcepts/CoreConcepts.jsx";
 import TabButton from "./components/TabButton/TabButton.jsx";
@@ -28,18 +28,16 @@ import TabButton from "./components/TabButton/TabButton.jsx";
 
 function App() {
   /* ******************************************
-   * useState is a react hook function used to 
-  * tell react to re-evaluate the componenet 
-  * which this function is called at the top 
-  * level from. It must always be called from 
-  * the top level of componenet, in this case, 
-  * the App componenet. 
+   * useState is a react hook function used to
+   * tell react to re-evaluate the componenet
+   * which this function is called at the top
+   * level from. It must always be called from
+   * the top level of componenet, in this case,
+   * the App componenet.
    * **************************************** */
-  const [selectedTopic, setSelectedTopic] = useState(
-    "Please select a subject to learn about."
-  );
+  const [selectedTopic, setSelectedTopic] = useState("components");
   const handleClick = (selectedClick) => {
-    setSelectedTopic(selectedClick)
+    setSelectedTopic(selectedClick);
   };
 
   return (
@@ -108,7 +106,13 @@ function App() {
             <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
-          {selectedTopic}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
