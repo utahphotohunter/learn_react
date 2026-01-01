@@ -1,3 +1,4 @@
+import { useState } from "react";
 import stateImg from "./assets/state-mgmt.png";
 import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header/Header.jsx";
@@ -26,8 +27,19 @@ import TabButton from "./components/TabButton/TabButton.jsx";
 // }
 
 function App() {
+  /* ******************************************
+   * useState is a react hook function used to 
+  * tell react to re-evaluate the componenet 
+  * which this function is called at the top 
+  * level from. It must always be called from 
+  * the top level of componenet, in this case, 
+  * the App componenet. 
+   * **************************************** */
+  const [selectedTopic, setSelectedTopic] = useState(
+    "Please select a subject to learn about."
+  );
   const handleClick = (selectedClick) => {
-    console.log(selectedClick);
+    setSelectedTopic(selectedClick)
   };
 
   return (
@@ -78,19 +90,25 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleClick("components")
-            /* ******************************************
-             * This arrow function allows for a 
-             * function with a custom argument to be 
-             * called. The arrow funciton is the value 
-             * passed as the value of the prop, not the 
-             * named function we are calling.
-             * **************************************** */
-            }>Components</TabButton>
+            <TabButton
+              onSelect={
+                () => handleClick("components")
+                /* ******************************************
+                 * This arrow function allows for a
+                 * function with a custom argument to be
+                 * called. The arrow funciton is the value
+                 * passed as the value of the prop, not the
+                 * named function we are calling.
+                 * **************************************** */
+              }
+            >
+              Components
+            </TabButton>
             <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
             <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
             <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
+          {selectedTopic}
         </section>
       </main>
     </div>
