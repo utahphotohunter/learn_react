@@ -26,8 +26,8 @@ import TabButton from "./components/TabButton/TabButton.jsx";
 // }
 
 function App() {
-  const handleClick = () => {
-    console.log("Hello World!");
+  const handleClick = (selectedClick) => {
+    console.log(selectedClick);
   };
 
   return (
@@ -78,10 +78,18 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={handleClick}>Components</TabButton>
-            <TabButton onSelect={handleClick}>JSX</TabButton>
-            <TabButton onSelect={handleClick}>Props</TabButton>
-            <TabButton onSelect={handleClick}>State</TabButton>
+            <TabButton onSelect={() => handleClick("components")
+            /* ******************************************
+             * This arrow function allows for a 
+             * function with a custom argument to be 
+             * called. The arrow funciton is the value 
+             * passed as the value of the prop, not the 
+             * named function we are calling.
+             * **************************************** */
+            }>Components</TabButton>
+            <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
           </menu>
         </section>
       </main>
