@@ -113,12 +113,28 @@ function App() {
                  * named function we are calling.
                  * **************************************** */
               }
+              isSelected={selectedTopic === "components"}
             >
               Components
             </TabButton>
-            <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
-            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
+            <TabButton
+              onSelect={() => handleClick("jsx")}
+              isSelected={selectedTopic === "jsx"}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              onSelect={() => handleClick("props")}
+              isSelected={selectedTopic === "props"}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              onSelect={() => handleClick("state")}
+              isSelected={selectedTopic === "state"}
+            >
+              State
+            </TabButton>
           </menu>
           {/* 
            This is one method that can be used for setting content dynamically, though it isn't as readable and clean as the final version used in this project. 
