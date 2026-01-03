@@ -35,6 +35,7 @@ function App() {
    * the top level of componenet, in this case,
    * the App componenet.
    * **************************************** */
+
   const [selectedTopic, setSelectedTopic] = useState();
 
   let tabContent = <p>Please select a topic.</p>;
@@ -61,6 +62,15 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
+            {/* 
+
+            The function below is a better way of replacing all 4 CoreConcept components without having to type them individually. It would iterate through each item and dynamically output it's content. This would prevent errors from data being changed. They "key" prop helps prevent errors and must be a unique value for each item in the array.
+            
+            {CORE_CONCEPTS.map((conceptItem) => (
+              <CoreConcept key={conceptItem.title} {...conceptItem} />
+            ))} 
+             
+             */}
             <CoreConcept
               /* ******************************************
                * This long hand way works, using image,
